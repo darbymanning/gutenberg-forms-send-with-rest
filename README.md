@@ -48,7 +48,7 @@ fields: {
   "0ef4dc__LS1lbWFpbC0wZWY0ZGMtZmFsc2UtZW1haWwtZW1haWxfMGVmNGRj": "joebloggs@yahoo.com",
   "adf2ea__LS1tZXNzYWdlLWFkZjJlYS1mYWxzZS1tZXNzYWdlLW1lc3NhZ2VfYWRmMmVh": "I'm a message"
   // …etc.
-];
+};
 ```
 
 ```javascript
