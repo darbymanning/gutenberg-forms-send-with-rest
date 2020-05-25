@@ -8,7 +8,12 @@ class _Email extends Email
     public function validateFields($fields = array())
     {
         $arranged_fields = [];
-        foreach ($fields as $field_id => $field_value) {
+
+        foreach ($fields as $field) {
+            $arranged_fields[$field['field_id']] = $field['field_value'];
+        }
+
+        foreach ($arranged_fields as $field_id => $field_value) {
             $exploded_id = explode("__", $field_id);
             $field_type = end($exploded_id);
             $f_DECODED = $this->validator->decode($field_type);
@@ -73,6 +78,7 @@ add_action('rest_api_init', function () {
 
             // Instantiate the Email class
             $email = new _Email($parsed_blocks);
+
             $valid_fields = $email->validateFields($fields);
 
             // Check for any errors

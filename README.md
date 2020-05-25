@@ -22,11 +22,11 @@ Note that this plugin naturally has a dependency of
 The POST endpoint that is created is `/wp/v2/cwp_gf_send_mail`. Naturally, you will to be authenticated in order to
 make a POST request. With the body of the request you will need to provide the following data:
 
-| Key       | Type   | Description                                                                                                   |
-| --------- | ------ | ------------------------------------------------------------------------------------------------------------- |
-| `attrs`   | Object | The `attrs` object which comes from the WordPress API for the Gutenberg Forms block                           |
-| `fields`  | Object | The fields in a key, value pattern. The key should be the field ID (this is `field_id` from the WP REST API). |
-| `post_id` | Number | The Post ID that the form originated from.                                                                    |
+| Key       | Type   | Description                                                                                                      |
+| --------- | ------ | ---------------------------------------------------------------------------------------------------------------- |
+| `attrs`   | Object | The `attrs` object which comes from the WordPress API for the Gutenberg Forms block                              |
+| `fields`  | Array  | The fields held in an array of objects. Each field needs to contain a `field_id` and `field_value` respecitvely. |
+| `post_id` | Number | The Post ID that the form originated from.                                                                       |
 
 Below is a breakdown of each property that should be sent in the POST request:
 
@@ -43,12 +43,22 @@ attrs: {
 ```
 
 ```javascript
-fields: {
-  "079d49__LS1uYW1lLTA3OWQ0OS1mYWxzZS1uYW1lLW5hbWVfMDc5ZDQ5": "Joe Bloggs",
-  "0ef4dc__LS1lbWFpbC0wZWY0ZGMtZmFsc2UtZW1haWwtZW1haWxfMGVmNGRj": "joebloggs@yahoo.com",
-  "adf2ea__LS1tZXNzYWdlLWFkZjJlYS1mYWxzZS1tZXNzYWdlLW1lc3NhZ2VfYWRmMmVh": "I'm a message"
+fields: [
+  {
+    field_value: 'Joe Bloggs',
+    field_id: '079d49__LS1uYW1lLTA3OWQ0OS1mYWxzZS1uYW1lLW5hbWVfMDc5ZDQ5',
+  },
+  {
+    field_value: 'joebloggs@yahoo.com',
+    field_id: '0ef4dc__LS1lbWFpbC0wZWY0ZGMtZmFsc2UtZW1haWwtZW1haWxfMGVmNGRj',
+  },
+  {
+    field_value: "I'm a message",
+    field_id:
+      'adf2ea__LS1tZXNzYWdlLWFkZjJlYS1mYWxzZS1tZXNzYWdlLW1lc3NhZ2VfYWRmMmVh',
+  },
   // …etc.
-};
+]
 ```
 
 ```javascript
