@@ -9,7 +9,7 @@
  * Plugin Name:       Gutenberg Forms send with REST
  * Plugin URI:        https://github.com/darbymanning/gutenberg-forms-send-with-rest
  * Description:       Creates a new endpoint to send mail via REST with the Gutenberg Forms plugin.
- * Version:           1.0.0
+ * Version:           1.0.1
  * Author:            Darby Manning
  * Author URI:        https://darbymanning.com
  * License:           GPL-2.0+
@@ -22,7 +22,7 @@ if (!defined('WPINC')) {
     die;
 }
 
-define('GUTENBERG_FORMS_TO_REST_VERSION', '1.0.0');
+define('GUTENBERG_FORMS_TO_REST_VERSION', '1.0.1');
 
 if (is_plugin_active('forms-gutenberg/plugin.php')) {
     require_once plugin_dir_path(__FILE__) . 'includes/init.php';

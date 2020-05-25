@@ -22,11 +22,11 @@ Note that this plugin naturally has a dependency of
 The POST endpoint that is created is `/wp/v2/cwp_gf_send_mail`. Naturally, you will to be authenticated in order to
 make a POST request. With the body of the request you will need to provide the following data:
 
-| Key       | Type   | Description                                                                                                                     |
-| --------- | ------ | ------------------------------------------------------------------------------------------------------------------------------- |
-| `attrs`   | Object | The `attrs` object which comes from the WordPress API for the Gutenberg Forms block                                             |
-| `fields`  | Array  | The fields and their respective values. This must follow the same format that the form would provide naturally from the plugin. |
-| `post_id` | Number | The Post ID that the form originated from.                                                                                      |
+| Key       | Type   | Description                                                                                                   |
+| --------- | ------ | ------------------------------------------------------------------------------------------------------------- |
+| `attrs`   | Object | The `attrs` object which comes from the WordPress API for the Gutenberg Forms block                           |
+| `fields`  | Object | The fields in a key, value pattern. The key should be the field ID (this is `field_id` from the WP REST API). |
+| `post_id` | Number | The Post ID that the form originated from.                                                                    |
 
 Below is a breakdown of each property that should be sent in the POST request:
 
@@ -43,41 +43,16 @@ attrs: {
 ```
 
 ```javascript
-fields: [
-  {
-    decoded_entry: {
-      admin_id: "name_079d49",
-      extra_meta: null,
-      field_id: "079d49",
-      is_required: "false",
-      type: "name",
-    },
-    field_data_id: "079d49",
-    field_id: "079d49__LS1uYW1lLTA3OWQ0OS1mYWxzZS1uYW1lLW5hbWVfMDc5ZDQ5",
-    field_type: "name",
-    field_value: "Joe Bloggs",
-    is_valid: true,
-  },
-  {
-    decoded_entry: {
-      is_required: "false",
-      type: "email",
-      admin_id: "email_0ef4dc",
-      extra_meta: null,
-      field_id: "0ef4dc",
-    },
-    field_data_id: "0ef4dc",
-    field_id: "0ef4dc__LS1lbWFpbC0wZWY0ZGMtZmFsc2UtZW1haWwtZW1haWxfMGVmNGRj",
-    field_type: "email",
-    field_value: "joebloggs@yahoo.com",
-    is_valid: true,
-  },
+fields: {
+  "079d49__LS1uYW1lLTA3OWQ0OS1mYWxzZS1uYW1lLW5hbWVfMDc5ZDQ5": "Joe Bloggs",
+  "0ef4dc__LS1lbWFpbC0wZWY0ZGMtZmFsc2UtZW1haWwtZW1haWxfMGVmNGRj": "joebloggs@yahoo.com",
+  "adf2ea__LS1tZXNzYWdlLWFkZjJlYS1mYWxzZS1tZXNzYWdlLW1lc3NhZ2VfYWRmMmVh": "I'm a message"
   // …etc.
 ];
 ```
 
 ```javascript
-post_id: 33;
+post_id: 1337
 ```
 
 ## Examples
