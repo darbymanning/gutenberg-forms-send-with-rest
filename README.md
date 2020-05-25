@@ -25,7 +25,7 @@ make a POST request. With the body of the request you will need to provide the f
 | Key       | Type   | Description                                                                                                      |
 | --------- | ------ | ---------------------------------------------------------------------------------------------------------------- |
 | `attrs`   | Object | The `attrs` object which comes from the WordPress API for the Gutenberg Forms block                              |
-| `fields`  | Array  | The fields held in an array of objects. Each field needs to contain a `field_id` and `field_value` respecitvely. |
+| `fields`  | Array  | The fields held in an array of objects. Each field needs to contain a `field_id` and `field_value` respectively. |
 | `post_id` | Number | The Post ID that the form originated from.                                                                       |
 
 Below is a breakdown of each property that should be sent in the POST request:
