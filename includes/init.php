@@ -68,7 +68,7 @@ add_action('rest_api_init', function () {
             // Get the required params from our request
             $fields = $req->get_param('fields');
             $attrs = $req->get_param('attrs');
-            $post_id = $req->get_param('post_id');
+            $post_id = $req->get_param('postId');
 
             $submit = $attrs['id'];
             $form_label = $attrs['formLabel'];
@@ -91,7 +91,7 @@ add_action('rest_api_init', function () {
                 $error->add(400, 'Please provide an attrs object. 🙏', 'attrs');
             }
             if (!$post_id) {
-                $error->add(400, 'Please provide a post_id. 🙏', 'post_id');
+                $error->add(400, 'Please provide a postId. 🙏', 'post_id');
             }
             if (!$submit) {
                 $error->add(400, 'Please provide a submit identifier. 🙏', 'submit');
