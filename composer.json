@@ -1,0 +1,19 @@
+{
+  "name": "darbymanning/gutenberg-forms-send-with-rest",
+  "description": "Creates a WordPress REST API (POST) endpoint which creates a Gutenberg Forms entry and sends an email.",
+  "keywords": [
+    "wordpress",
+    "plugin"
+  ],
+  "homepage": "https://github.com/darbymanning/gutenberg-forms-send-with-rest",
+  "authors": [
+    {
+      "name": "Darby Manning",
+      "homepage": "https://darbymanning.com"
+    }
+  ],
+  "type": "wordpress-plugin",
+  "require": {
+    "php": ">=5.6"
+  }
+}
