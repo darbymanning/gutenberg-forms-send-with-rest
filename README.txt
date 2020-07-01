@@ -34,5 +34,8 @@ Note that this plugin naturally has a dependency of
 
 = 1.0 =
 *26 May 2020*
-
 * Initial release
+
+= 1.0.5 =
+*1 July 2020*
+* Adds composer.json so we can manage this plugin dependency via Composer

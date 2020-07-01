@@ -1,6 +1,6 @@
 {
   "name": "darbymanning/gutenberg-forms-send-with-rest",
-  "description": "Creates a WordPress REST API (POST) endpoint which creates a Gutenberg Forms entry and sends an email.",
+  "description": "Creates a new endpoint to send mail via REST with the Gutenberg Forms plugin.",
   "keywords": [
     "wordpress",
     "plugin"
