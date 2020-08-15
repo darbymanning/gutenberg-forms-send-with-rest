@@ -5,15 +5,16 @@ require_once WP_PLUGIN_DIR . '/forms-gutenberg/triggers/email.php';
 // We extend the Email class in order to expose a validate fields method.
 class _Email extends Email
 {
-    public function validateFields($fields = array())
+    public function validateFields($fields = [])
     {
+        $_fields = [];
         $arranged_fields = [];
 
         foreach ($fields as $field) {
-            $arranged_fields[$field['field_id']] = $field['field_value'];
+            $_fields[$field['field_id']] = $field['field_value'];
         }
 
-        foreach ($arranged_fields as $field_id => $field_value) {
+        foreach ($_fields as $field_id => $field_value) {
             $exploded_id = explode("__", $field_id);
             $field_type = end($exploded_id);
             $f_DECODED = $this->validator->decode($field_type);
@@ -29,14 +30,14 @@ class _Email extends Email
             } else {
                 $sanitized_field_value = $sanitizedValue;
             }
-            $arranged_data = array(
+            $arranged_data = [
                 'field_data_id' => $id,
                 'field_value' => $sanitized_field_value,
                 'is_valid' => $field_id === "g-recaptcha-response" ? true : $is_valid,
                 'field_id' => $field_id,
                 'field_type' => $type,
                 'decoded_entry' => $this->validator->decode($field_type),
-            );
+            ];
             if ($type === 'file_upload') {
                 $file_to_upload = $_FILES;
                 $file_name = $file_to_upload[$field_id]['name'];
@@ -125,7 +126,7 @@ add_action('rest_api_init', function () {
             $email->sendMail($valid_fields);
             ob_end_clean();
 
-            return wp_send_json_success('Passed on that data to Gutenberg Forms to process like a boss. 😎');
+            return wp_send_json_success($valid_fields);
         },
     ]);
 });

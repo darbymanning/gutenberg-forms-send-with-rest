@@ -39,3 +39,7 @@ Note that this plugin naturally has a dependency of
 = 1.0.5 =
 *1 July 2020*
 * Adds composer.json so we can manage this plugin dependency via Composer
+
+= 1.0.6 =
+*15 August 2020*
+* Fixes an issue with the array of fields duplicating some data
